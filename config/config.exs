@@ -13,10 +13,15 @@ config :elixirLearning,
 # Configures the endpoint
 config :elixirLearning, ElixirLearningWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "XelxED0qYNknpaQK1Pz1dIO7Zse4mpSOtuZICZ1NMuMfr4hShtOiVzvS52Ici4u0",
+  secret_key_base: "YelxED0qYNknpaQK1Pz1dIO7Zse4mpSOtuZICZ1NMuMfr4hShtOiVzvS52Ici4u0",
   render_errors: [view: ElixirLearningWeb.ErrorView, accepts: ~w(json), layout: false],
   pubsub_server: ElixirLearning.PubSub,
   live_view: [signing_salt: "ZnY9Okjy"]
+
+
+  config :elixirLearning, ElixirLearning.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
 
 # Configures Elixir's Logger
 config :logger, :console,
