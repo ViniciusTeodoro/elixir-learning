@@ -2,6 +2,7 @@ defmodule ElixirLearningWeb.AccountController do
   use ElixirLearningWeb, :controller
 
   alias ElixirLearning.Account
+  alias ElixirLearning.Accounts.Transactions.Response, as: TransactionResponse
 
   action_fallback ElixirLearning.FallbackController
 
@@ -19,6 +20,14 @@ defmodule ElixirLearningWeb.AccountController do
       conn
       |> put_status(:ok)
       |> render("update.json", account: account)
+    end
+  end
+
+  def transaction(conn, params) do
+    with {:ok, %TransactionResponse{} = transaction} <- ElixirLearning.transaction(params) do
+      conn
+      |> put_status(:ok)
+      |> render("transaction.json", transaction: transaction)
     end
   end
 
